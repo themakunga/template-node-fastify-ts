@@ -1,0 +1,9 @@
+{
+  "watch": [".", "tsconfig.json", "package.json", "development.env", "debug.env"],
+  "ext": "ts,json,env",
+  "ignore": ["test"],
+  "env": {
+    "NODE_ENV": "development"
+  },
+  "exec": "npm run build && npm run start"
+}

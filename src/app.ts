@@ -1,12 +1,13 @@
+/* eslint-disable no-void */
 import { fastify, FastifyInstance } from 'fastify';
 import fastifySwagger from 'fastify-swagger';
-import fastifyNow from 'fastify-now';
-import path from 'path';
-import loggerOptions from '~utils/loggerOptions';
+import fastifyAutoload from 'fastify-autoload';
+import { join } from 'path';
+import fastifyRoutes from 'fastify-routes';
 import swaggerOptions from '~utils/swaggerOptions';
-import fastifyRoutes from '~utils/routes';
+import loggerOptions from './utils/loggerOptions';
 
-export async function build(opts = {}): Promise<FastifyInstance> {
+export default async function build(opts = {}): Promise<FastifyInstance> {
   const fs: FastifyInstance = fastify({
     ...opts,
     logger: loggerOptions,
@@ -15,10 +16,10 @@ export async function build(opts = {}): Promise<FastifyInstance> {
   fs.register(fastifyRoutes);
   fs.register(fastifySwagger, swaggerOptions);
 
-  fs.register(fastifyNow, {
-    routesFolder: path.join(__dirname, './routes'),
-    pathPrefix: '/v1',
+  fs.register(fastifyAutoload, {
+    dir: join(__dirname, 'routes'),
+    options: { prefix: '/v1' },
+    routeParams: true,
   });
-
   return fs;
 }

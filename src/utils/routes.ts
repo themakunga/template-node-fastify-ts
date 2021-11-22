@@ -1,7 +1,6 @@
-import { FastifyInstance } from 'fastify';
 import consola from 'consola';
 
-export default function printRoutes(server: FastifyInstance): void {
+export default function printRoutes(server: any): void {
   const { routes } = server;
   const hidden: string[] = [
     '/docs/uiConfig',

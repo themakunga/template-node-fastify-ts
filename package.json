@@ -30,6 +30,7 @@
     "eslint-plugin-jest": "^25.2.4",
     "husky": "^7.0.4",
     "jest": "^27.3.1",
+    "jest-environment-node": "^27.3.1",
     "nodemon": "^2.0.15",
     "pino-pretty": "^7.2.0",
     "rimraf": "^3.0.2",
@@ -42,10 +43,22 @@
     "dotenv": "^10.0.0",
     "env-schema": "^3.5.0",
     "fastify": "^3.24.0",
+    "fastify-autoload": "^3.9.0",
+    "fastify-cli": "^2.13.0",
     "fastify-now": "^2.4.0",
     "fastify-plugin": "^3.0.0",
+    "fastify-routes": "^3.1.0",
     "fastify-swagger": "^4.12.6",
     "fluent-json-schema": "^3.0.1",
     "module-alias": "^2.2.2"
+  },
+  "_moduleAliases": {
+    "~": "./dist",
+    "~controllers": "./dist/controllers",
+    "~interfaces": "./dist/interfaces",
+    "~repositories": "./dist/repositories",
+    "~routes": "./dist/routes",
+    "~schemas": "./dist/schemas",
+    "~utils": "./dist/utils"
   }
 }

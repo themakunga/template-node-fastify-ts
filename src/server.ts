@@ -4,7 +4,7 @@ require('module-alias/register');
 import consola from 'consola';
 import config from '~utils/config';
 import printRoutes from '~utils/routes';
-import { build } from './app';
+import build from './app';
 
 config();
 
@@ -13,7 +13,7 @@ const {
   HOST: host,
 } = process.env;
 
-async function start() {
+export async function start() {
   try {
     const server = await build();
     printRoutes(server);
@@ -27,5 +27,6 @@ async function start() {
     process.exit(1);
   }
 }
-
-start();
+if (process.env.NODE_ENV !== 'testing') {
+  start();
+}
